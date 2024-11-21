@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-rollouts-install-application
+spec:
+  project: <project> # AppProject 由不同集群替代資源
+  source:
+    repoURL: <argo_repo_url>
+    path: cluster-infra-install/install/argo-rollouts/install # 指向自己的部屬資源
+  destination:
+    name: <name> # 部屬目標，由不同集群替代資源
+  syncPolicy:
+    syncOptions:
+      - PruneLast=true
+      - RespectIgnoreDifferences=true
+      - ApplyOutOfSyncOnly=true

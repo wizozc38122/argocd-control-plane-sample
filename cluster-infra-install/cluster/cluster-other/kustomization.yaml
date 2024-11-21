@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  # 要部屬的資源，添加在此處即可
+  - ../../install/argo-rollouts
+patches:
+- path: patch.yaml
+  target:
+    kind: Application
+# 部屬後的資源加上後綴，避免重複命名
+nameSuffix: -cluster-<other>

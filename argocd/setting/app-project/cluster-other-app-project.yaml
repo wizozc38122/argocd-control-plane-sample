@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: cluster-<other>-app-project
+spec:
+  description: <description>
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+    - name: <other>
+      namespace: '*'
+      server: <servier> # 限制部屬叢集
+  sourceRepos:
+    - '*'

@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-argocd-infra-install-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: <argo_repo_url>
+    path: cluster-infra-install/cluster/cluster-argocd # 指定集群的目錄用來觸發所有應用程式同步
+  destination:
+    name: in-cluster
+    namespace: argocd
+  syncPolicy:
+    syncOptions:
+      - PreserveResourcesOnDeletion=true # 避免頂級資源被刪除
+      - RespectIgnoreDifferences=true
+      - ApplyOutOfSyncOnly=true

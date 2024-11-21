@@ -1,0 +1,8 @@
+# 替換 AppProject
+- op: replace
+  path: /spec/project
+  value: '<other-app-project>'
+# 替換 部屬集群
+- op: replace
+  path: /spec/destination/name
+  value: '<other-cluster>'
